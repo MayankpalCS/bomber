@@ -1,6 +1,4 @@
 import time
-
-import re
 import requests
 from scapy.all import *
 from scapy.layers.inet import IP
